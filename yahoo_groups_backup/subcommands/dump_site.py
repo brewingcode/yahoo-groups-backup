@@ -229,7 +229,7 @@ angular
 
     def apply_redactions(self, text):
         """Apply the redactions to a given piece of text."""
-        return self.redactions.apply(text)
+        return text
 
     def render_index(self):
         """Render the index file."""
