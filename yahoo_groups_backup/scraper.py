@@ -33,9 +33,9 @@ class YahooBackupScraper:
 
     def _is_login_page(self):
         html = self.br.html
-        eprint("Detecting the log-in page...")
-        # eprint(html)
-        return "Enter your&nbsp;email" in html and "Sign&nbsp;in" in html
+        b = bool(re.search(r'Don\'t have an\s+account\?', ''.join(html)))
+        eprint("Detecting the log-in page: " + str(b))
+        return b
 
     def _process_login_page(self):
         """Process the login page."""
