@@ -28,7 +28,7 @@ def command(arguments):
     for file_info in scraper.yield_walk_files():
         if not db.has_file_entry(file_info['filePath']) or not db.has_file_data(file_info['filePath']):
             eprint("Inserting file '%s'..." % file_info['filePath'])
-            file_data = requests.get(file_info['url']).content
+            file_data = requests.get(file_info['url'], verify=False).content
             db.upsert_file_entry(file_info)
             db.update_file_data(file_info['filePath'], file_data)
         else:
